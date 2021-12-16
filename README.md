@@ -6,5 +6,3 @@ Terraform
 AWS
 JavaScript
 
-Ibraheem
-Bilal
