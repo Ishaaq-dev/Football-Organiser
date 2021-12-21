@@ -1,10 +1,6 @@
 ###############################################################################
 # Provider for the module with default tags
 ###############################################################################
-locals {
-  bucket_name  = "${var.environment}-${var.project}-terraform-state"
-  project_name = "${environment}-${project}-terraform-state-lock"
-}
 
 terraform {
   required_version = ">= 1.0.0"
