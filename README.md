@@ -17,6 +17,8 @@ Ibby is a lank weeb (edited in my branch)
 -£1500 (Shamsa Iqbal's Visa)
 -£670.99 (Life-size extendable selfie stick)
 -£300.73 (Ordering Pizza)
+-Dice is bad at math
 -£8798.67 (Monthly expenses)
-Total balance: £-9893.47
+Total balance: £-3,000,000,000
+
 
