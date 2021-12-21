@@ -16,6 +16,7 @@ Ibby is a lank weeb (edited in my branch)
 -£6000 (Green BD/Hour)
 -£1500 (Shamsa Iqbal's Visa)
 -£670.99 (Life-size extendable selfie stick)
+-£300.73 (Ordering Pizza)
 -£8798.67 (Monthly expenses)
 Total balance: £-9893.47
 
