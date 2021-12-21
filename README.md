@@ -18,6 +18,7 @@ Ibby is a lank weeb (edited in my branch)
 -£670.99 (Life-size extendable selfie stick)
 -£300.73 (Ordering Pizza)
 -Dice is bad at math
+-Gold
 -£8798.67 (Monthly expenses)
 Total balance: £-3,000,000,000
 
