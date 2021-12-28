@@ -9,43 +9,12 @@ JavaScript
 # ------------------------------------------------------
 # Project Practice & Learning
 
-Bilal licked Dice's ass
+Bilal: "Hey guys just doing a test"
 
-Yushua has joined the group
+Yushua: "Glad to say your test worked Bilal"
 
-Bilal's ass has been created in my branch
+Ibraheem: "We got it working"
 
-£1528 paid through Jahfar Iqbal's Monzo
+Is'haaq: "AYYYYYYYYYYY"
 
-£1528 has left your account for Shamsa's Visa
-
-Bilal has no had
-
-ibby is a brainlet (this has been edited in my branch)
-
-Bilal's ass has been created in my branch
-
-Ibby is a lank weeb (edited in my branch)
--£6000 (Green BD/Hour)
--£1500 (Shamsa Iqbal's Visa)
--£670.99 (Life-size extendable selfie stick)
--£300.73 (Ordering Pizza)
--Dice is bad at math
--Gold
--£8798.67 (Monthly expenses)
-Total balance: £-3,000,000,000
-
-Ibby is a lank weeb (edited in my branch)
-
-	- £6000 (Green BD/Hour)
-
-	- £1500 (Shamsa Iqbal's Visa)
-
-	- £670.99 (Life-size extendable selfie stick) 
-
-	- £8798.67 (Monthly expenses)
-
-Total balance: £-9893.47
-
-- Jahfar Iqbal has left family/ Gone to get milk from Aldi
 
