@@ -24,3 +24,15 @@ resource "aws_lambda_function" "incoming_lambda" {
   source_code_hash = filebase64sha256("src-zip/incoming-lambda.zip")
   runtime          = "python3.9"
 }
+
+resource "aws_dynamodb_table" "terraform_state_lock" {
+  name           = "Football_Organiser"
+  read_capacity  = 1
+  write_capacity = 1
+  hash_key       = "LockID"
+
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+}
