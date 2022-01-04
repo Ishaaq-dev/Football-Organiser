@@ -1,7 +1,7 @@
 variable "s3_bucket_names" {
   type = set(string)
   default = [
-    "dev",
+    "env",
     "personal"
   ]
 }
