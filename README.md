@@ -14,7 +14,7 @@ To create your own stack, you need to:
 - Go to S3
 - Click on the personal remote state bucket
 - Create your own folder inside the personal bucket
-  - You can either name the folder your name or something that represents the ticket your working on
+  - You can either name the folder your name or something that represents the ticket your are working on
 
 Once the folder/directory has been created in s3, remember what you called it, you will be needing it in following steps.
 
