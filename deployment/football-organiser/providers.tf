@@ -11,10 +11,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "development-football-organiser-terraform-state"
+    bucket         = "personal-football-organiser-terraform-state"
     region         = "eu-west-1"
     key            = "lambda_source/terraform.tfstate"
-    dynamodb_table = "development-football-organiser-terraform-state-lock"
+    dynamodb_table = "personal-football-organiser-terraform-state-lock"
     encrypt        = true
   }
 }
