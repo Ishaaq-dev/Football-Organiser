@@ -1,9 +1,13 @@
-variable "env" {
-  type        = string
-  description = "A string representing the environment you would like to deploy in"
+variable "s3_bucket_names" {
+  type = set(string)
+  default = [
+    "dev",
+    "personal"
+  ]
 }
 
 variable "project" {
   type        = string
   description = "A string representing the name of the project"
+  default     = "football-organiser"
 }
