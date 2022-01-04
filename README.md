@@ -26,7 +26,7 @@ Once the folder/directory has been created in s3, remember what you called it, y
     - from `key = <directory name>/terraform.tfstate`
     - to `key = ishaaq/terraform.tfstate`
 
-** make sure you create the folder in aws s3 before you edit the file in vs code or try running any terraform commands **
+**make sure you create the folder in aws s3 before you edit the file in vs code or try running any terraform commands**
 
 Once you have successfully completed the steps above, you will be able to run `terraform` commands to create your own personal stack while keeping your `tfstate` online separate from everyone else
 
