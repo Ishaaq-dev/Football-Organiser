@@ -21,10 +21,10 @@ Once the folder/directory has been created in s3, remember what you called it, y
 - Open the project with `visual studio code`
 - Open `deployment/football-organiser/providers.tf` file
 - Modify the `key` attribute under the `backend s3` block
- - Uncomment the line (remove the hashtag, `ctrl /`)
- - Replace the value `<directory name>` with the name of the directory/folder you created earlier in AWS s3, for example:
-  - from `key = <directory name>/terraform.tfstate`
-  - to `key = ishaaq/terraform.tfstate`
+ -- Uncomment the line (remove the hashtag, `ctrl /`)
+ -- Replace the value `<directory name>` with the name of the directory/folder you created earlier in AWS s3, for example:
+  --- from `key = <directory name>/terraform.tfstate`
+  --- to `key = ishaaq/terraform.tfstate`
 
 ** make sure you create the folder in aws s3 before you edit the file in vs code or try running any terraform commands **
 
