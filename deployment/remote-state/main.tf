@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "development-football-organiser-terraform-state"
+  bucket = "${var.env}-${var.project}-terraform-state"
 
   acl = "private"
 
@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = "development-football-organiser-terraform-state-lock"
+  name           = "${var.env}-${var.project}-terraform-state-lock"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "LockID"
