@@ -6,15 +6,15 @@
 # - storage (DynamoDB/ElasticSearch)
 
 locals {
-  incoming_lambda_name      = "${var.environment}-${var.project}-handle-incoming-sms"
+  incoming_lambda_name      = "${var.prefix}-${var.project}-handle-incoming-sms"
   incoming_lambda_file_name = "src-zip/incoming-lambda.zip"
   lambda_handler            = "LambdaHandler.process_event"
 
-  contacts_dynamo_name = "${var.environment}-${var.project}-contacts"
+  contacts_dynamo_name = "${var.prefix}-${var.project}-contacts"
 
-  enquire_incoming_sns_name = "${var.environment}-${var.project}-enquire-incoming-sms-sns"
+  enquire_incoming_sns_name = "${var.prefix}-${var.project}-enquire-incoming-sms-sns"
 
-  enquire_incoming_message_sqs = "${var.environment}-${var.project}-enquire-incoming-sms-sqs"
+  enquire_incoming_message_sqs = "${var.prefix}-${var.project}-enquire-incoming-sms-sqs"
 }
 
 data "archive_file" "incoming_lambda_zip" {

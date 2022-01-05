@@ -1,7 +1,6 @@
-variable "environment" {
+variable "prefix" {
   type        = string
-  description = "A string representing the environment you would like to deploy in"
-  default     = "dev"
+  description = "A string representing the prefix you would like to deploy in"
 }
 
 variable "project" {
