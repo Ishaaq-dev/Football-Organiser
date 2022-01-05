@@ -3,7 +3,9 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "development-football-organiser-terraform-state"
+  for_each = var.s3_bucket_names
+
+  bucket = "${each.value}-${var.project}-terraform-state"
 
   acl = "private"
 
@@ -12,12 +14,14 @@ resource "aws_s3_bucket" "terraform_state" {
   }
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
 resource "aws_dynamodb_table" "terraform_state_lock" {
-  name           = "development-football-organiser-terraform-state-lock"
+  for_each = var.s3_bucket_names
+
+  name           = "${each.value}-${var.project}-terraform-state-lock"
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "LockID"
