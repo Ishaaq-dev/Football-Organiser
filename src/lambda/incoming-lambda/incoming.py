@@ -1,5 +1,10 @@
 import os
 import json
+import boto3 as aws
+import uuid
+
+dynamoDB = aws.client('dynamodb')
+contact_table_name = os.environ['contacts_table')
 
 
 def handle_incoming_message(body_json):
@@ -11,42 +16,23 @@ def handle_incoming_message(body_json):
     print("Origin number: %s \nMessageBody: %s \nMessageKeyword: %s" %
           (origin_number, message_body, message_keyword))
 
-    print("Ibraheem, Bilal, Yushua")
-    # from the `message` variable
-    # create a json object to put into dynamoDB
-
-    object_to_put_into_dynamo = {
-        "name": "saaqy"
+    object_for_dynamo = {
+        "id": {
+            "S": str(uuid.uuid4())
+        },
+        "origin_number": {
+            "S": origin_number
+        },
+        "message_body": {
+            "S": message_body
+        },
+        "message_keyword": {
+            "S": message_keyword
+        }
     }
-
-    print(object_to_put_into_dynamo)
-
-    object2 = {
-        "name": "bilal"
-    }
-
-    print(object2)
-
-    object3 = {
-        "name": "Ibraheem"
-    }
-
-    print(object3)
-
-    object4 = {
-        "name": "Yushua"
-    }
-
-    print(object4)
-
-    object5 = {
-        "name": "Yushua2"
-    }
-
-    print(object5)
-
-    object6 = {
-        "name": "Yushua3"
-    }
-
-    print(object6)
+    print(object_for_dynamo)
+    result = dynamoDB.put_item(
+        TableName=contact_table_name,
+        Item=object_for_dynamo
+    )
+    print(result)

@@ -30,6 +30,12 @@ resource "aws_lambda_function" "incoming_lambda" {
   handler          = local.lambda_handler
   source_code_hash = filebase64sha256(local.incoming_lambda_file_name)
   runtime          = "python3.9"
+
+  environment {
+    variables = {
+      contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+    }
+  }
 }
 
 resource "aws_sns_topic" "enquire_incoming_message_sns" {
@@ -38,6 +44,31 @@ resource "aws_sns_topic" "enquire_incoming_message_sns" {
 
 resource "aws_sqs_queue" "enquire_incoming_message_sqs" {
   name = local.enquire_incoming_message_sqs
+}
+
+resource "aws_sqs_queue_policy" "test" {
+  queue_url = aws_sqs_queue.enquire_incoming_message_sqs.id
+
+  policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Id": "sqspolicy",
+  "Statement": [
+    {
+      "Sid": "First",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "sqs:SendMessage",
+      "Resource": "${aws_sqs_queue.enquire_incoming_message_sqs.arn}",
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "${aws_sns_topic.enquire_incoming_message_sns.arn}"
+        }
+      }
+    }
+  ]
+}
+POLICY
 }
 
 resource "aws_sns_topic_subscription" "enquire_incoming_sns_sqs_subscription" {

@@ -1,6 +1,5 @@
 import os
 import json
-import boto3 as aws
 from incoming import handle_incoming_message
 
 
