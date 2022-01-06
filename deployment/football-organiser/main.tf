@@ -6,14 +6,11 @@
 # - storage (DynamoDB/ElasticSearch)
 
 locals {
-  incoming_lambda_name      = "${var.prefix}-${var.project}-handle-incoming-sms"
-  incoming_lambda_file_name = "src-zip/incoming-lambda.zip"
-  lambda_handler            = "LambdaHandler.process_event"
-
-  contacts_dynamo_name = "${var.prefix}-${var.project}-contacts"
-
-  enquire_incoming_sns_name = "${var.prefix}-${var.project}-enquire-incoming-sms-sns"
-
+  incoming_lambda_name         = "${var.prefix}-${var.project}-handle-incoming-sms"
+  incoming_lambda_file_name    = "src-zip/incoming-lambda.zip"
+  lambda_handler               = "LambdaHandler.process_event"
+  contacts_dynamo_name         = "${var.prefix}-${var.project}-contacts"
+  enquire_incoming_sns_name    = "${var.prefix}-${var.project}-enquire-incoming-sms-sns"
   enquire_incoming_message_sqs = "${var.prefix}-${var.project}-enquire-incoming-sms-sqs"
 }
 
