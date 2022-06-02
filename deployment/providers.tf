@@ -11,8 +11,8 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "personal-football-organiser-terraform-state"
-    region = "eu-west-1"
+    bucket         = "personal-football-organiser-terraform-state"
+    region         = "eu-west-1"
     key            = "lambda_source/terraform.tfstate"
     dynamodb_table = "personal-football-organiser-terraform-state-lock"
     encrypt        = true

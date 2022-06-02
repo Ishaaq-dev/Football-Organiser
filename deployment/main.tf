@@ -16,7 +16,7 @@ locals {
 
 data "archive_file" "incoming_lambda_zip" {
   type        = "zip"
-  source_dir  = "${path.module}/../../src/lambda/incoming-lambda"
+  source_dir  = "${path.module}/../src/lambda/incoming-lambda"
   output_path = "${path.module}/src-zip/incoming-lambda.zip"
 }
 
