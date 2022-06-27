@@ -1,1 +1,0 @@
-key = "ishaaq/terraform.tfstate"
