@@ -1,0 +1,3 @@
+[submodule "deployment/scripts"]
+	path = deployment/scripts
+	url = git@ssh.github.com:Ishaaq-dev/scripts.git
