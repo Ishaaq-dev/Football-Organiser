@@ -6,7 +6,6 @@
 # - storage (DynamoDB/ElasticSearch)
 
 locals {
-  lambda_handler               = "LambdaHandler.process_event"
   contacts_dynamo_name         = "${var.prefix}-${var.project}-contacts"
 
   # Incoming Lambda
