@@ -20,6 +20,17 @@ module "incoming_lambda_function" {
   }
 }
 
+module "contact_players_lambda_function" {
+  source = "./modules/lambda"
+
+  prefix = var.prefix
+  project = var.project
+  lambda_name = "contact-players"
+  env_vars = {
+    contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+  }
+}
+
 module "incoming_sns_sqs" {
   source = "./modules/sns-sqs"
 

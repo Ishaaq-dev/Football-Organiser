@@ -4,7 +4,7 @@ import boto3 as aws
 import uuid
 
 dynamoDB = aws.client('dynamodb')
-contact_table_name = os.environ['contacts_table')
+contact_table_name = os.environ['contacts_table']
 
 
 def handle_incoming_message(body_json):
