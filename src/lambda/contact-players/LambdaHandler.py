@@ -3,10 +3,9 @@ import json
 from contact_players import handle_contacting_players
 
 def process_event(event, context):
-    body = event.get('Records')[0].get('body')
-    body_json = json.loads(body)
-    handle_contacting_players(body_json)
+    detail = event.get('detail')
+    handle_contacting_players(detail)
     return {
         'statusCode': 200,
-        'body': body_json
+        'body': detail
     }
