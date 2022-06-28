@@ -1,5 +1,4 @@
 import os
-import json
 import boto3 as aws
 
 dynamoDB = aws.client('dynamodb')
