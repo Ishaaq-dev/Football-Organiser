@@ -8,4 +8,4 @@ def handle_contacting_players(body_json):
     phone_numbers = dynamoDB.get_attribute_from_all(contacts_table_name, 'phone_number')
     print('phone numbers: {}'.format(phone_numbers))
 
-    pinpoint.send_messages(phone_numbers, 'This is a test')
+    pinpoint.send_messages(phone_numbers, 'initial')
