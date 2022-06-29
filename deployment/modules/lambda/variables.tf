@@ -28,3 +28,7 @@ variable "lambda_runtime" {
 variable "env_vars" {
   type = map
 }
+
+variable "layer_arns" {
+  type = list
+}
