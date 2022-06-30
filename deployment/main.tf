@@ -1,10 +1,3 @@
-# need to create the following:
-# - Lambda - done
-# - sns - done
-# - sqs - done
-# - pinpoint - create resource then import remote config
-# - storage (DynamoDB/ElasticSearch) - done
-
 locals {
   contacts_dynamo_name = "${var.prefix}-${var.project}-contacts"
 }
