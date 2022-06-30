@@ -105,6 +105,7 @@ Before advancing to the next step, check the following:
 - The `.tfvars` files should contain values that can be used to identify you
 
 Run `git status`
+
 There should be no changes noticed by git 
 
 If this is **NOT** the case, please speak to a member of the team for assistance before advancing the setup.
