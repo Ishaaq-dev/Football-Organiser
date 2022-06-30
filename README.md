@@ -43,10 +43,10 @@ If you are unsure at any of these steps, please contact a member of the team for
 
 There are four steps to creating your own stack:
 
-- 1. Create copies of the `.tfvars` files
-- 2. Setup the terraform backend
-- 3. Add personal prefix
-- 4. Run script for terraform `init | plan | apply | destroy`
+1. Create copies of the `.tfvars` files
+2. Setup the terraform backend
+3. Add personal prefix
+4. Run script for terraform `init | plan | apply | destroy`
 
 - Open the project with `visual studio code`
 
@@ -54,13 +54,13 @@ There are four steps to creating your own stack:
 
 - Open `deployment/vars/` in the file explorer
 - There will be two files:
-- - `pers.tfvars.example`
-- - `providers.tfvars.example`
-- - **Do not delete, rename or edit these files**
+-- `pers.tfvars.example`
+-- `providers.tfvars.example`
+-- **Do not delete, rename or edit these files**
 - Copy and paste these files into the same location
 - Rename the copies to:
-- - `pers.tfvars`
-- - `providers.tfvars`
+-- `pers.tfvars`
+-- `providers.tfvars`
 
 If you have done this step correctly, you should have:
 - Four files in `deployment/vars`
