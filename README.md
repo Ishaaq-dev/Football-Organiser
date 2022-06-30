@@ -34,8 +34,8 @@ Optional and recommended but not necessary:
 - `ssh` for GitHub
 - `gpg` for GitHub
 - Package manager installed:
-- - `brew` for mac
-- - `chocolatey` / `choco` for windows
+  - `brew` for mac
+  - `chocolatey` / `choco` for windows
 
 If you are unsure at any of these steps, please contact a member of the team for assistance
 
@@ -54,20 +54,20 @@ There are four steps to creating your own stack:
 
 - Open `deployment/vars/` in the file explorer
 - There will be two files:
--- `pers.tfvars.example`
--- `providers.tfvars.example`
--- **Do not delete, rename or edit these files**
+  - `pers.tfvars.example`
+  - `providers.tfvars.example`
+  - **Do not delete, rename or edit these files**
 - Copy and paste these files into the same location
 - Rename the copies to:
--- `pers.tfvars`
--- `providers.tfvars`
+  - `pers.tfvars`
+  - `providers.tfvars`
 
 If you have done this step correctly, you should have:
 - Four files in `deployment/vars`
-- - `pers.tfvars.example`
-- - `providers.tfvars.example`
-- - `pers.tfvars`
-- - `providers.tfvars`
+  - `pers.tfvars.example`
+  - `providers.tfvars.example`
+  - `pers.tfvars`
+  - `providers.tfvars`
 
 ### Step 2 - Setup the terraform backend
 
@@ -98,10 +98,10 @@ If you have done this setep correctly, the `pers.tfvars` file should look someth
 
 Before advancing to the next step, check the following:
 - `deployment/vars/` has four files
-- - `pers.tfvars.example`
-- - `providers.tfvars.example`
-- - `pers.tfvars`
-- - `providers.tfvars`
+  - `pers.tfvars.example`
+  - `providers.tfvars.example`
+  - `pers.tfvars`
+  - `providers.tfvars`
 - The `.tfvars.example` files should **NOT** have been edited
 - The `.tfvars` files should contain values that can be used to identify you
 
@@ -116,13 +116,13 @@ If this is **NOT** the case, please speak to a member of the team for assistance
 
 The following commands are avaible for you to run into terminal:
 - `./scripts/terraform.sh init`
-- - Initialises terraform and the backend
+  - Initialises terraform and the backend
 - `./scripts/terraform.sh plan`
-- - Outputs the changes terraform will make to the infrastructure
+  - Outputs the changes terraform will make to the infrastructure
 - `./scripts/terraform.sh apply`
-- - Outputs and **makes** the changes to the infrastructure
+  - Outputs and **makes** the changes to the infrastructure
 - `./scripts/terraform.sh destroy`
-- - Destroys in the infrastructure created by terraform
+  - Destroys in the infrastructure created by terraform
 
 **SETUP COMPLETE**
 
