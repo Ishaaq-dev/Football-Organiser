@@ -46,9 +46,9 @@ There are four steps to creating your own stack:
 3. Add personal prefix
 4. Run script for terraform `init | plan | apply | destroy`
 
+## Step 0
 
 Open the project with `visual studio code`
-
 
 ## Step 1 - Create copies of the `.tfvars` files
 
