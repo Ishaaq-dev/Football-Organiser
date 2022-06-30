@@ -7,9 +7,7 @@ Utilises:
 - AWS
 - Python
 
-# Info
-
-## Clone
+# Clone
 
 This repo utilises git modules therefore has a slightly different clone command than the normal one.
 
@@ -19,7 +17,7 @@ If this is a first time clone, use the following command:
 if you have already cloned the repo however before the introduction of sub-modules in this project, then run the following command:
 - `git submodule update --init`
 
-## Prerequisites
+# Prerequisites
 
 The following have been installed and setup:
 - Terraform
@@ -39,7 +37,7 @@ Optional and recommended but not necessary:
 
 If you are unsure at any of these steps, please contact a member of the team for assistance
 
-## How to run
+# How to run
 
 There are four steps to creating your own stack:
 
@@ -50,7 +48,7 @@ There are four steps to creating your own stack:
 
 - Open the project with `visual studio code`
 
-### Step 1 - Create copies of the `.tfvars` files
+## Step 1 - Create copies of the `.tfvars` files
 
 - Open `deployment/vars/` in the file explorer
 - There will be two files:
@@ -68,7 +66,7 @@ If you have done this step correctly, you should have four files in `deployment/
 - `pers.tfvars`
 - `providers.tfvars`
 
-### Step 2 - Setup the terraform backend
+## Step 2 - Setup the terraform backend
 
 Open the `deployment/vars/providers.tfvars` file, there will be one variable:
 - `key = "<your name>/terraform.tfstate"`
@@ -81,7 +79,7 @@ If you have done this step correctly, the `providers.tfvars` file should look so
 - `key = "ishaaq/terraform.tfstate"`
 
 
-### Step 3 - Add personal prefix
+## Step 3 - Add personal prefix
 
 Open the `deployment/vars/pers.tfvars` file, there will be two variables:
 - `prefix = "<your name>"`
@@ -109,7 +107,7 @@ There should be no changes noticed by git
 
 If this is **NOT** the case, please speak to a member of the team for assistance before advancing the setup.
 
-### Step 4 - Run script for terraform `init | plan | apply | destroy`
+## Step 4 - Run script for terraform `init | plan | apply | destroy`
 
 `cd` into `deployment/`
 
