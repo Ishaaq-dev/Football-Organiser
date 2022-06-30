@@ -14,7 +14,7 @@ This repo utilises git modules therefore has a slightly different clone command 
 If this is a first time clone, use the following command:
 - `git clone git@github.com:Ishaaq-dev/Football-Organiser.git --recursive`
 
-if you have already cloned the repo however before the introduction of sub-modules in this project, then run the following command:
+if you cloned the repo before the introduction of sub-modules in this project, then run the following command:
 - `git submodule update --init`
 
 # Prerequisites
