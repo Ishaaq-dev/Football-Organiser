@@ -133,7 +133,6 @@ You will have created lambdas and a dynamoDB instance.
 
 They will be viewable in the AWS Console.
 
-# ------------------------------------------------------
 # Project Practice & Learning
 
 Bilal: "Hey guys just doing a test"
