@@ -62,12 +62,11 @@ There are four steps to creating your own stack:
   - `pers.tfvars`
   - `providers.tfvars`
 
-If you have done this step correctly, you should have:
-- Four files in `deployment/vars`
-  - `pers.tfvars.example`
-  - `providers.tfvars.example`
-  - `pers.tfvars`
-  - `providers.tfvars`
+If you have done this step correctly, you should have four files in `deployment/vars`:
+- `pers.tfvars.example`
+- `providers.tfvars.example`
+- `pers.tfvars`
+- `providers.tfvars`
 
 ### Step 2 - Setup the terraform backend
 
