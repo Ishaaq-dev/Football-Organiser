@@ -35,7 +35,7 @@ Optional and recommended but not necessary:
   - `brew` for mac
   - `chocolatey` / `choco` for windows
 
-If you are unsure at any of these steps, please contact a member of the team for assistance
+If you are unsure whether you have the correct setup/environment, please contact a member of the team for assistance
 
 # How to run
 
