@@ -1,6 +1,6 @@
 # Football-Organiser
 
-A project to help organise local football game
+A project to automate organising local football games
 
 Utilises:
 - Terraform
