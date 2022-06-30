@@ -41,7 +41,7 @@ If you are unsure whether you have the correct setup/environment, please contact
 
 There are four steps to creating your own stack:
 
-1. Create copies of the `.tfvars` files
+1. Create copies of the `deployment/vars/*.tfvars` files
 2. Setup the terraform backend
 3. Add personal prefix
 4. Run script for terraform `init | plan | apply | destroy`
