@@ -1,4 +1,31 @@
-# Football-Organiser                                   
+```
+
+
+$$$$$$$$\                   $$\     $$\                 $$\ $$\                     
+$$  _____|                  $$ |    $$ |                $$ |$$ |                    
+$$ |    $$$$$$\   $$$$$$\ $$$$$$\   $$$$$$$\   $$$$$$\  $$ |$$ |                    
+$$$$$\ $$  __$$\ $$  __$$\\_$$  _|  $$  __$$\  \____$$\ $$ |$$ |                    
+$$  __|$$ /  $$ |$$ /  $$ | $$ |    $$ |  $$ | $$$$$$$ |$$ |$$ |                    
+$$ |   $$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$  __$$ |$$ |$$ |                    
+$$ |   \$$$$$$  |\$$$$$$  | \$$$$  |$$$$$$$  |\$$$$$$$ |$$ |$$ |                    
+\__|    \______/  \______/   \____/ \_______/  \_______|\__|\__|                    
+                                                                                    
+                                                                                    
+                                                                                    
+ $$$$$$\                                          $$\                               
+$$  __$$\                                         \__|                              
+$$ /  $$ | $$$$$$\   $$$$$$\   $$$$$$\  $$$$$$$\  $$\  $$$$$$$\  $$$$$$\   $$$$$$\  
+$$ |  $$ |$$  __$$\ $$  __$$\  \____$$\ $$  __$$\ $$ |$$  _____|$$  __$$\ $$  __$$\ 
+$$ |  $$ |$$ |  \__|$$ /  $$ | $$$$$$$ |$$ |  $$ |$$ |\$$$$$$\  $$$$$$$$ |$$ |  \__|
+$$ |  $$ |$$ |      $$ |  $$ |$$  __$$ |$$ |  $$ |$$ | \____$$\ $$   ____|$$ |      
+ $$$$$$  |$$ |      \$$$$$$$ |\$$$$$$$ |$$ |  $$ |$$ |$$$$$$$  |\$$$$$$$\ $$ |      
+ \______/ \__|       \____$$ | \_______|\__|  \__|\__|\_______/  \_______|\__|      
+                    $$\   $$ |                                                      
+                    \$$$$$$  |                                                      
+                     \______/                                                       
+
+
+```
                                                     
 A project to automate organising local football games
 
@@ -52,11 +79,11 @@ Open the project with `visual studio code`
 
 ## Step 1 - Create copies of the `.tfvars` files
 
-- Open `deployment/vars/` in the file explorer
+- Open `deployment/vars/` in the file explorer in vs code
 - There will be two files:
   - `pers.tfvars.example`
   - `providers.tfvars.example`
-  - **Do not delete, rename or edit these files**
+  - **DO NOT delete, rename or edit these files**
 - Copy and paste these files into the same location
 - Rename the copies to:
   - `pers.tfvars`
@@ -71,29 +98,37 @@ If you have done this step correctly, you should have four files in `deployment/
 ## Step 2 - Setup the terraform backend
 
 Open the `deployment/vars/providers.tfvars` file, there will be one variable:
-- `key = "<your name>/terraform.tfstate"`
+```
+key = "<your name>/terraform.tfstate"
+```
 
 replace `<your name>` with your name, or a unique identifier
 
-Make sure the value you choose is unique to you and that **no one** in the team is using the same value
+Make sure the value you choose is unique to you and that **NO ONE** in the team is using the same value
 
-If you have done this step correctly, the `providers.tfvars` file should look something like the following:
-- `key = "ishaaq/terraform.tfstate"`
+If you have done this step correctly, the `providers.tfvars` file should look something like the following:  
+```
+key = "ishaaq/terraform.tfstate"
+```
 
 
 ## Step 3 - Add personal prefix
 
-Open the `deployment/vars/pers.tfvars` file, there will be two variables:
-- `prefix = "<your name>"`
-- `project = "football-organiser"`
+Open the `deployment/vars/pers.tfvars` file, there will be two variables:  
+```
+prefix = "<your name>"
+project = "football-organiser"
+```
 
 replace `<your name>` with your name, or any unique identifier.
 
-Make sure the value you choose is unique to you and that **no one** in the team is using the same value
+Make sure the value you choose is unique to you and that **NO ONE** in the team is using the same value
 
-If you have done this setep correctly, the `pers.tfvars` file should look something like the following:
-- `prefix = "ishaaq"`
-- `project = "football-organiser"`
+If you have done this setep correctly, the `pers.tfvars` file should look something like the following:  
+```
+prefix = "ishaaq"
+project = "football-organiser"
+```
 
 Before advancing to the next step, check the following:
 - `deployment/vars/` has four files
