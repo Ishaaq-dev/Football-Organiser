@@ -98,6 +98,7 @@ If you have done this step correctly, you should have four files in `deployment/
 ## Step 2 - Setup the terraform backend
 
 Open the `deployment/vars/providers.tfvars` file, there will be one variable:  
+  
 `key = "<your name>/terraform.tfstate"`
 
 replace `<your name>` with your name, or a unique identifier
@@ -105,6 +106,7 @@ replace `<your name>` with your name, or a unique identifier
 Make sure the value you choose is unique to you and that **NO ONE** in the team is using the same value
 
 If you have done this step correctly, the `providers.tfvars` file should look something like the following:  
+  
 `key = "ishaaq/terraform.tfstate"`
 
 
