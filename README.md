@@ -79,7 +79,7 @@ Open the project with `visual studio code`
 
 ## Step 1 - Create copies of the `.tfvars` files
 
-- Open `deployment/vars/` in the file explorer in vs code
+- Open `deployment/vars/` in vs code's explorer
 - There will be two files:
   - `pers.tfvars.example`
   - `providers.tfvars.example`
