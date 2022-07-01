@@ -1,43 +1,139 @@
-# Football-Organiser
+# Football-Organiser                                   
+                                                    
+A project to automate organising local football games
 
-A project to help organise local football game
 Utilises:
-Terraform
-AWS
-JavaScript
+- Terraform
+- AWS
+- Python
 
-# Info
+# Clone
 
-To create your own stack, you need to:
+This repo utilises git modules therefore has a slightly different clone command than the normal one.
 
-- Login to AWS Console
-- Go to S3
-- Click on the personal remote state bucket
-- Create your own folder inside the personal bucket
-  - You can either name the folder your name or something that represents the ticket your are working on
+If this is a first time clone, use the following command:
+- `git clone git@github.com:Ishaaq-dev/Football-Organiser.git --recursive`
 
-Once the folder/directory has been created in s3, remember what you called it, you will be needing it in following steps.
+if you cloned the repo before the introduction of sub-modules in this project, then run the following command:
+- `git submodule update --init`
 
-- Open the project with `visual studio code`
-- Open `deployment/football-organiser/providers.tf` file
-- Modify the `key` attribute under the `backend s3` block
-  - Uncomment the line (remove the hashtag, `ctrl /`)
-  - Replace the value `<directory name>` with the name of the directory/folder you created earlier in AWS s3, for example:
-    - from `key = <directory name>/terraform.tfstate`
-    - to `key = ishaaq/terraform.tfstate`
+# Prerequisites
 
-**Take note: make sure you create the folder in aws s3 before you edit the file in vs code or try running any terraform commands**
+The following have been installed and setup:
+- Terraform
+- AWS CLI v2
+- Pyhton3
+- AWS IAM login for the Football-Organiser AWS Account
+- Programmatic access to AWS
+- Git Cli (windows)
+- Visual Studio Code (or IDE of your preference)
 
-Once you have successfully completed the steps above, you will be able to run `terraform` commands to create your own personal stack while keeping your `tfstate` online separate from everyone else
+Optional and recommended but not necessary:
+- `ssh` for GitHub
+- `gpg` for GitHub
+- Package manager installed:
+  - `brew` for mac
+  - `chocolatey` / `choco` for windows
 
-To create your own stack of the project:
+If you are unsure whether you have the correct setup/environment, please contact a member of the team for assistance
 
-- cd into `deployment/football-organiser`
-- run `terraform plan`
-- run `terraform apply`
+# How to run
+
+There are four steps to creating your own stack:
+
+1. Create copies of the `deployment/vars/*.tfvars` files
+2. Setup the terraform backend
+3. Add personal prefix
+4. Run script for terraform `init | plan | apply | destroy`
+
+## Step 0
+
+Open the project with `visual studio code`
+
+## Step 1 - Create copies of the `.tfvars` files
+
+- Open `deployment/vars/` in the file explorer
+- There will be two files:
+  - `pers.tfvars.example`
+  - `providers.tfvars.example`
+  - **Do not delete, rename or edit these files**
+- Copy and paste these files into the same location
+- Rename the copies to:
+  - `pers.tfvars`
+  - `providers.tfvars`
+
+If you have done this step correctly, you should have four files in `deployment/vars`:
+- `pers.tfvars.example`
+- `providers.tfvars.example`
+- `pers.tfvars`
+- `providers.tfvars`
+
+## Step 2 - Setup the terraform backend
+
+Open the `deployment/vars/providers.tfvars` file, there will be one variable:
+- `key = "<your name>/terraform.tfstate"`
+
+replace `<your name>` with your name, or a unique identifier
+
+Make sure the value you choose is unique to you and that **no one** in the team is using the same value
+
+If you have done this step correctly, the `providers.tfvars` file should look something like the following:
+- `key = "ishaaq/terraform.tfstate"`
 
 
-# ------------------------------------------------------
+## Step 3 - Add personal prefix
+
+Open the `deployment/vars/pers.tfvars` file, there will be two variables:
+- `prefix = "<your name>"`
+- `project = "football-organiser"`
+
+replace `<your name>` with your name, or any unique identifier.
+
+Make sure the value you choose is unique to you and that **no one** in the team is using the same value
+
+If you have done this setep correctly, the `pers.tfvars` file should look something like the following:
+- `prefix = "ishaaq"`
+- `project = "football-organiser"`
+
+Before advancing to the next step, check the following:
+- `deployment/vars/` has four files
+  - `pers.tfvars.example`
+  - `providers.tfvars.example`
+  - `pers.tfvars`
+  - `providers.tfvars`
+- The `.tfvars.example` files should **NOT** have been edited
+- The `.tfvars` files should contain values that can be used to identify you
+
+Run `git status`
+
+There should be no changes noticed by git 
+
+If this is **NOT** the case, please speak to a member of the team for assistance before advancing the setup.
+
+## Step 4 - Run script for terraform `init | plan | apply | destroy`
+
+`cd` into `deployment/`
+
+The following commands are avaible for you to run into terminal:
+- `./scripts/terraform.sh init`
+  - Initialises terraform and the backend
+- `./scripts/terraform.sh plan`
+  - Outputs the changes terraform will make to the infrastructure
+- `./scripts/terraform.sh apply`
+  - Outputs and **makes** the changes to the infrastructure
+- `./scripts/terraform.sh destroy`
+  - Destroys in the infrastructure created by terraform
+
+**SETUP COMPLETE**
+
+Login to the AWS Console
+
+Make sure your region is `eu-west-1` / `ireland`
+
+You will have created lambdas and a dynamoDB instance.
+
+They will be viewable in the AWS Console.
+
 # Project Practice & Learning
 
 Bilal: "Hey guys just doing a test"
