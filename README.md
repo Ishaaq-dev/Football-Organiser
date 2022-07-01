@@ -97,30 +97,34 @@ If you have done this step correctly, you should have four files in `deployment/
 
 ## Step 2 - Setup the terraform backend
 
-Open the `deployment/vars/providers.tfvars` file, there will be one variable:
+Open the `deployment/vars/providers.tfvars` file, there will be one variable:  
 `key = "<your name>/terraform.tfstate"`
 
 replace `<your name>` with your name, or a unique identifier
 
-Make sure the value you choose is unique to you and that **no one** in the team is using the same value
+Make sure the value you choose is unique to you and that **NO ONE** in the team is using the same value
 
-If you have done this step correctly, the `providers.tfvars` file should look something like the following:
+If you have done this step correctly, the `providers.tfvars` file should look something like the following:  
 `key = "ishaaq/terraform.tfstate"`
 
 
 ## Step 3 - Add personal prefix
 
-Open the `deployment/vars/pers.tfvars` file, there will be two variables:
-`prefix = "<your name>"`
-`project = "football-organiser"`
+Open the `deployment/vars/pers.tfvars` file, there will be two variables:  
+```
+prefix = "<your name>"
+project = "football-organiser"
+```
 
 replace `<your name>` with your name, or any unique identifier.
 
-Make sure the value you choose is unique to you and that **no one** in the team is using the same value
+Make sure the value you choose is unique to you and that **NO ONE** in the team is using the same value
 
-If you have done this setep correctly, the `pers.tfvars` file should look something like the following:
-`prefix = "ishaaq"`
-`project = "football-organiser"`
+If you have done this setep correctly, the `pers.tfvars` file should look something like the following:  
+```
+prefix = "ishaaq"
+project = "football-organiser"
+```
 
 Before advancing to the next step, check the following:
 - `deployment/vars/` has four files
