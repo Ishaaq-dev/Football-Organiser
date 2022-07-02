@@ -49,7 +49,7 @@ if you cloned the repo before the introduction of sub-modules in this project, t
 The following have been installed and setup:
 - Terraform
 - AWS CLI v2
-- Pyhton3
+- Python3
 - AWS IAM login for the Football-Organiser AWS Account
 - Programmatic access to AWS
 - Git Cli (windows)
