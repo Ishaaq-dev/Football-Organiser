@@ -24,7 +24,6 @@ $$ |  $$ |$$ |      $$ |  $$ |$$  __$$ |$$ |  $$ |$$ | \____$$\ $$   ____|$$ |
                     \$$$$$$  |                                                      
                      \______/                                                       
 
-im tr5ying to break this
 ```
                                                     
 A project to automate organising local football games
