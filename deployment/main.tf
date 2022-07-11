@@ -26,6 +26,14 @@ module "contact_players_lambda_function" {
   }
 }
 
+resource "aws_lambda_permission" "allow_cloudwatch" {
+  statement_id  = "AllowExecutionFromCloudWatch"
+  action        = "lambda:InvokeFunction"
+  function_name = module.contact_players_lambda_function.lambda_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.weekly_cw_rule.arn
+}
+
 data "archive_file" "archive_util_layers" {
   type        = "zip"
   source_dir  = "${path.module}/../src/utils"
@@ -47,6 +55,18 @@ module "incoming_sns_sqs" {
   project    = var.project
   name       = "enquire-incoming-sms"
   lambda_arn = module.handle_incoming_responses_lambda_function.lambda_arn
+}
+
+resource "aws_cloudwatch_event_rule" "weekly_cw_rule" {
+  name = "weekly_monday"
+  description = "A rule to fire events weekly on Monday"
+  schedule_expression = "cron(0 10 ? * MON *)"
+}
+
+resource "aws_cloudwatch_event_target" "cw_rule_contact_players" {
+  arn  = module.contact_players_lambda_function.lambda_arn
+  rule = aws_cloudwatch_event_rule.weekly_cw_rule.id
+
 }
 
 resource "aws_dynamodb_table" "contacts_dynamodb" {
