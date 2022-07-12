@@ -58,15 +58,24 @@ module "incoming_sns_sqs" {
 }
 
 resource "aws_cloudwatch_event_rule" "weekly_cw_rule" {
-  name = "weekly_monday"
-  description = "A rule to fire events weekly on Monday"
+  name                = "weekly_monday"
+  description         = "A rule to fire events weekly on Monday"
   schedule_expression = "cron(0 10 ? * MON *)"
 }
 
 resource "aws_cloudwatch_event_target" "cw_rule_contact_players" {
   arn  = module.contact_players_lambda_function.lambda_arn
   rule = aws_cloudwatch_event_rule.weekly_cw_rule.id
-
+  input_transformer {
+    input_paths = {
+      test = "this is a test",
+    }
+    input_template = <<EOF
+{
+  "test_id": <test>
+}
+EOF
+  }
 }
 
 resource "aws_dynamodb_table" "contacts_dynamodb" {
