@@ -10,6 +10,6 @@ variable "name" {
   type = string
 }
 
-variable "lambda_arn" {
+variable "function_arn" {
   type = string
 }

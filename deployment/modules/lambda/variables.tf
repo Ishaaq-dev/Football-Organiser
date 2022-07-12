@@ -6,7 +6,7 @@ variable "project" {
   type = string
 }
 
-variable "lambda_name" {
+variable "function_name" {
   type = string
 }
 

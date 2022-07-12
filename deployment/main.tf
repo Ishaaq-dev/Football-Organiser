@@ -7,7 +7,7 @@ module "handle_incoming_responses_lambda_function" {
 
   prefix      = var.prefix
   project     = var.project
-  lambda_name = "handle-incoming-responses"
+  function_name = "handle-incoming-responses"
   layer_arns  = [aws_lambda_layer_version.util_layer.arn]
   env_vars = {
     contacts_table = aws_dynamodb_table.contacts_dynamodb.name
@@ -19,7 +19,7 @@ module "contact_players_lambda_function" {
 
   prefix      = var.prefix
   project     = var.project
-  lambda_name = "contact-players"
+  function_name = "contact-players"
   layer_arns  = [aws_lambda_layer_version.util_layer.arn]
   env_vars = {
     contacts_table = aws_dynamodb_table.contacts_dynamodb.name
@@ -46,7 +46,7 @@ module "incoming_sns_sqs" {
   prefix     = var.prefix
   project    = var.project
   name       = "enquire-incoming-sms"
-  lambda_arn = module.handle_incoming_responses_lambda_function.lambda_arn
+  function_arn = module.handle_incoming_responses_lambda_function.function_arn
 }
 
 module "weekly_monday_cw_rule" {
@@ -56,8 +56,8 @@ module "weekly_monday_cw_rule" {
   cw_event_rule_description = "A rule to fire events weekly on Monday at 10:00"
   cron = "cron(0 10 ? * MON *)"
 
-  function_name = module.contact_players_lambda_function.lambda_name
-  function_arn = module.contact_players_lambda_function.lambda_arn
+  function_name = module.contact_players_lambda_function.function_name
+  function_arn = module.contact_players_lambda_function.function_arn
 }
 
 resource "aws_dynamodb_table" "contacts_dynamodb" {
