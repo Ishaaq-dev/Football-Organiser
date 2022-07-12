@@ -26,14 +26,6 @@ module "contact_players_lambda_function" {
   }
 }
 
-resource "aws_lambda_permission" "allow_cloudwatch" {
-  statement_id  = "AllowExecutionFromCloudWatch"
-  action        = "lambda:InvokeFunction"
-  function_name = module.contact_players_lambda_function.lambda_name
-  principal     = "events.amazonaws.com"
-  source_arn    = aws_cloudwatch_event_rule.weekly_cw_rule.arn
-}
-
 data "archive_file" "archive_util_layers" {
   type        = "zip"
   source_dir  = "${path.module}/../src/utils"
@@ -57,25 +49,15 @@ module "incoming_sns_sqs" {
   lambda_arn = module.handle_incoming_responses_lambda_function.lambda_arn
 }
 
-resource "aws_cloudwatch_event_rule" "weekly_cw_rule" {
-  name                = "weekly_monday"
-  description         = "A rule to fire events weekly on Monday"
-  schedule_expression = "cron(0 10 ? * MON *)"
-}
+module "weekly_monday_cw_rule" {
+  source = "./modules/cw-events"
 
-resource "aws_cloudwatch_event_target" "cw_rule_contact_players" {
-  arn  = module.contact_players_lambda_function.lambda_arn
-  rule = aws_cloudwatch_event_rule.weekly_cw_rule.id
-  input_transformer {
-    input_paths = {
-      test = "this is a test",
-    }
-    input_template = <<EOF
-{
-  "test_id": <test>
-}
-EOF
-  }
+  cw_event_rule_name = "weekly_monday"
+  cw_event_rule_description = "A rule to fire events weekly on Monday at 10:00"
+  cron = "cron(0 10 ? * MON *)"
+
+  function_name = module.contact_players_lambda_function.lambda_name
+  function_arn = module.contact_players_lambda_function.lambda_arn
 }
 
 resource "aws_dynamodb_table" "contacts_dynamodb" {
