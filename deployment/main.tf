@@ -1,5 +1,5 @@
 locals {
-  contacts_dynamo_name = "${var.prefix}-${var.project}-contacts"
+  players_dynamo_name = "${var.prefix}-${var.project}-players"
 }
 
 module "handle_incoming_responses_lambda_function" {
@@ -10,7 +10,7 @@ module "handle_incoming_responses_lambda_function" {
   lambda_name = "handle-incoming-responses"
   layer_arns  = [aws_lambda_layer_version.util_layer.arn]
   env_vars = {
-    contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+    players_db = aws_dynamodb_table.players_dynamodb.name
   }
 }
 
@@ -22,7 +22,7 @@ module "contact_players_lambda_function" {
   lambda_name = "contact-players"
   layer_arns  = [aws_lambda_layer_version.util_layer.arn]
   env_vars = {
-    contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+    players_db = aws_dynamodb_table.players_dynamodb.name
   }
 }
 
@@ -49,8 +49,8 @@ module "incoming_sns_sqs" {
   lambda_arn = module.handle_incoming_responses_lambda_function.lambda_arn
 }
 
-resource "aws_dynamodb_table" "contacts_dynamodb" {
-  name           = local.contacts_dynamo_name
+resource "aws_dynamodb_table" "players_dynamodb" {
+  name           = local.players_dynamo_name
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "phone_number"
