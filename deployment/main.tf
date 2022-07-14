@@ -60,6 +60,17 @@ module "weekly_monday_cw_rule" {
   function_arn = module.contact_players_lambda_function.function_arn
 }
 
+module "weekly_monday_cw_rule" {
+  source = "./modules/cw-events"
+
+  cw_event_rule_name = "weekly_wednesday"
+  cw_event_rule_description = "A rule to fire events weekly on Wednesday at 10:00"
+  cron = "cron(0 10 ? * WED *)"
+
+  function_name = module.contact_players_lambda_function.function_name
+  function_arn = module.contact_players_lambda_function.function_arn
+}
+
 resource "aws_dynamodb_table" "contacts_dynamodb" {
   name           = local.contacts_dynamo_name
   read_capacity  = 1
