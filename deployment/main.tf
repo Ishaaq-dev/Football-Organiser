@@ -26,6 +26,18 @@ module "contact_players_lambda_function" {
   }
 }
 
+module "manage_players_db_function" {
+  source = "./modules/lambda"
+
+  prefix = var.prefix
+  project = var.project
+  lambda_name = "manage-players"
+  layer_arns = [aws_lambda_layer_version.util_layer.arn]
+  env_vars = {
+    contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+  }
+}
+
 data "archive_file" "archive_util_layers" {
   type        = "zip"
   source_dir  = "${path.module}/../src/utils"
