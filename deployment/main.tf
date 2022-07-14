@@ -60,12 +60,12 @@ module "weekly_monday_cw_rule" {
   function_arn = module.contact_players_lambda_function.function_arn
 }
 
-module "weekly_monday_cw_rule" {
+module "weekly_saturday_cw_rule" {
   source = "./modules/cw-events"
 
-  cw_event_rule_name = "weekly_wednesday"
-  cw_event_rule_description = "A rule to fire events weekly on Wednesday at 10:00"
-  cron = "cron(0 10 ? * WED *)"
+  cw_event_rule_name = "weekly_saturday"
+  cw_event_rule_description = "A rule to fire events weekly on saturday at 18:00 to reset playing status"
+  cron = "cron(0 18:00 ? * SAT *)"
 
   function_name = module.contact_players_lambda_function.function_name
   function_arn = module.contact_players_lambda_function.function_arn
