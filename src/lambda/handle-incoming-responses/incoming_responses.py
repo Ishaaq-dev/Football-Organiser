@@ -2,7 +2,8 @@ import os
 import json
 
 import dynamoDB
-contacts_table_name = os.environ['contacts_table']
+
+players_table_name = os.environ['players_db']
 
 GAME_INVITE = {
     'accepted': 'yes',
@@ -18,7 +19,7 @@ def handle_incoming_responses(body_json):
     print("Phone number: %s \nPlayerResponse: %s \nMessageKeyword: %s" %
           (phone_number, player_response, message_keyword))
 
-    player_info = dynamoDB.get_item(contacts_table_name, 'phone_number', phone_number)
+    player_info = dynamoDB.get_item(players_table_name, 'phone_number', phone_number)
     print('player_info: {}'.format(player_info))
 
     if not player_info:
@@ -31,4 +32,4 @@ def handle_incoming_responses(body_json):
     
     player_info['playing'] = player_state
 
-    dynamoDB.put_item(contacts_table_name, player_info)
+    dynamoDB.put_item(players_table_name, player_info)
