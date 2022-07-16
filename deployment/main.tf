@@ -1,5 +1,5 @@
 locals {
-  contacts_dynamo_name = "${var.prefix}-${var.project}-contacts"
+  players_dynamo_name = "${var.prefix}-${var.project}-players"
 }
 
 module "handle_incoming_responses_lambda_function" {
@@ -7,10 +7,10 @@ module "handle_incoming_responses_lambda_function" {
 
   prefix      = var.prefix
   project     = var.project
-  lambda_name = "handle-incoming-responses"
+  function_name = "handle-incoming-responses"
   layer_arns  = [aws_lambda_layer_version.util_layer.arn]
   env_vars = {
-    contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+    players_db = aws_dynamodb_table.players_dynamodb.name
   }
 }
 
@@ -19,10 +19,10 @@ module "contact_players_lambda_function" {
 
   prefix      = var.prefix
   project     = var.project
-  lambda_name = "contact-players"
+  function_name = "contact-players"
   layer_arns  = [aws_lambda_layer_version.util_layer.arn]
   env_vars = {
-    contacts_table = aws_dynamodb_table.contacts_dynamodb.name
+    players_db = aws_dynamodb_table.players_dynamodb.name
   }
 }
 
@@ -58,11 +58,33 @@ module "incoming_sns_sqs" {
   prefix     = var.prefix
   project    = var.project
   name       = "enquire-incoming-sms"
-  lambda_arn = module.handle_incoming_responses_lambda_function.lambda_arn
+  function_arn = module.handle_incoming_responses_lambda_function.function_arn
 }
 
-resource "aws_dynamodb_table" "contacts_dynamodb" {
-  name           = local.contacts_dynamo_name
+module "weekly_monday_cw_rule" {
+  source = "./modules/cw-events"
+
+  cw_event_rule_name = "weekly_monday"
+  cw_event_rule_description = "A rule to fire events weekly on Monday at 10:00"
+  cron = "cron(0 10 ? * MON *)"
+
+  function_name = module.contact_players_lambda_function.function_name
+  function_arn = module.contact_players_lambda_function.function_arn
+}
+
+module "weekly_saturday_cw_rule" {
+  source = "./modules/cw-events"
+
+  cw_event_rule_name = "weekly_saturday"
+  cw_event_rule_description = "A rule to fire events weekly on saturday at 18:00 to reset playing status"
+  cron = "cron(0 18:00 ? * SAT *)"
+
+  function_name = module.contact_players_lambda_function.function_name
+  function_arn = module.contact_players_lambda_function.function_arn
+}
+
+resource "aws_dynamodb_table" "players_dynamodb" {
+  name           = local.players_dynamo_name
   read_capacity  = 1
   write_capacity = 1
   hash_key       = "phone_number"
