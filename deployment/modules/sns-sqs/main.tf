@@ -43,5 +43,5 @@ resource "aws_sns_topic_subscription" "sns_sqs_subscription" {
 
 resource "aws_lambda_event_source_mapping" "sqs_function_mapping" {
   event_source_arn = aws_sqs_queue.sqs_queue.arn
-  function_name    = var.lambda_arn
+  function_name    = var.function_arn
 }
