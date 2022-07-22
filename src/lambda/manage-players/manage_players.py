@@ -1,7 +1,8 @@
 import os
 import dynamoDB
 
-contacts_table_name = os.environ['contacts_table']
+players_table_name = os.environ['players_db']
 
 def handle_manage_players(body_json):
-    player_states = dynamoDB.get_attribute_from_all(contacts_table_name, 'playing')
+    player_states = dynamoDB.get_attribute_from_all(players_table_name, 'playing')
+    
