@@ -35,7 +35,7 @@ data "archive_file" "archive_util_layers" {
 resource "aws_lambda_layer_version" "util_layer" {
   filename         = "src-zip/utils.zip"
   layer_name       = "utils"
-  source_code_hash = filebase64sha256("src-zip/utils.zip")
+  # source_code_hash = filebase64sha256("src-zip/utils.zip")
 
   compatible_runtimes = ["python3.9"]
 }

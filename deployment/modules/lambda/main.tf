@@ -14,7 +14,7 @@ resource "aws_lambda_function" "lambda_function" {
   function_name = local.function_name
   role = var.role_arn
   handler = var.lambda_handler 
-  source_code_hash = filebase64sha256(local.lambda_file_name)
+  # source_code_hash = filebase64sha256(local.lambda_file_name)
   runtime = var.lambda_runtime
   layers = var.layer_arns
 
