@@ -109,3 +109,8 @@ schema "football_organiser" {
   charset = "latin1"
   collate = "latin1_swedish_ci"
 }
+
+schema "innodb" {
+  charset = "latin1"
+  collate = "latin1_swedish_ci"
+}
