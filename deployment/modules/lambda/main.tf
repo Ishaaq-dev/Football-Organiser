@@ -1,6 +1,6 @@
 locals {
-    lambda_file_name = "src-zip/${var.function_name}.zip"
-    function_name = "${var.prefix}-${var.project}-${var.function_name}"
+  lambda_file_name = "src-zip/${var.function_name}.zip"
+  function_name = "${var.prefix}-${var.project}-${var.function_name}"
 }
 
 data "archive_file" "archive_lambda_src" {
@@ -14,7 +14,7 @@ resource "aws_lambda_function" "lambda_function" {
   function_name = local.function_name
   role = var.role_arn
   handler = var.lambda_handler 
-  # source_code_hash = filebase64sha256(local.lambda_file_name)
+  source_code_hash = filebase64sha256(local.lambda_file_name)
   runtime = var.lambda_runtime
   layers = var.layer_arns
 

@@ -32,7 +32,7 @@ resource "aws_secretsmanager_secret_version" "rds_credentials" {
   "engine": "${aws_db_instance.football_organiser_db.engine}",
   "host": "${aws_db_instance.football_organiser_db.endpoint}",
   "port": ${aws_db_instance.football_organiser_db.port},
-  "dbname": ${aws_db_instance.football_organiser_db.name}
+  "dbname": "${aws_db_instance.football_organiser_db.name}",
   "dbInstanceIdentifier": "${aws_db_instance.football_organiser_db.identifier}"
 }
 EOF

@@ -46,7 +46,7 @@ table "games" {
     type = mediumtext
   }
 
-  column "time_start" {
+  column "start_time" {
     null = false
     type = timestamp
   }

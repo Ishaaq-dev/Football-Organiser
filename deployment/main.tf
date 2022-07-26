@@ -35,7 +35,7 @@ data "archive_file" "archive_util_layers" {
 resource "aws_lambda_layer_version" "util_layer" {
   filename         = "src-zip/utils.zip"
   layer_name       = "utils"
-  # source_code_hash = filebase64sha256("src-zip/utils.zip")
+  source_code_hash = filebase64sha256("src-zip/utils.zip")
 
   compatible_runtimes = ["python3.9"]
 }
@@ -50,7 +50,7 @@ module "incoming_sns_sqs" {
 }
 
 module "weekly_monday_cw_rule" {
-  source = "../modules/cw-events"
+  source = "./modules/cw-events"
 
   cw_event_rule_name        = "weekly_monday"
   cw_event_rule_description = "A rule to fire events weekly on Monday at 10:00"
@@ -61,7 +61,7 @@ module "weekly_monday_cw_rule" {
 }
 
 module "weekly_saturday_cw_rule" {
-  source = "../modules/cw-events"
+  source = "./modules/cw-events"
 
   cw_event_rule_name        = "weekly_saturday"
   cw_event_rule_description = "A rule to fire events weekly on saturday at 18:00 to reset playing status"
