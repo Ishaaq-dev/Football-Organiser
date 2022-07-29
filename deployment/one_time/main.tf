@@ -30,7 +30,7 @@ resource "aws_secretsmanager_secret_version" "rds_credentials" {
   "username": "${aws_db_instance.football_organiser_db.username}",
   "password": "${aws_db_instance.football_organiser_db.password}",
   "engine": "${aws_db_instance.football_organiser_db.engine}",
-  "host": "${aws_db_instance.football_organiser_db.endpoint}",
+  "host": "${aws_db_instance.football_organiser_db.address}",
   "port": ${aws_db_instance.football_organiser_db.port},
   "dbname": ${aws_db_instance.football_organiser_db.name}
   "dbInstanceIdentifier": "${aws_db_instance.football_organiser_db.identifier}"
