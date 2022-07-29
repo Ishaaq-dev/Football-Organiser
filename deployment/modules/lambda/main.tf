@@ -18,6 +18,11 @@ resource "aws_lambda_function" "lambda_function" {
   runtime = var.lambda_runtime
   layers = var.layer_arns
 
+  vpc_config {
+    subnet_ids = [ "subnet-65a4393f", "subnet-57eaba31", "subnet-e4edceac" ]
+    security_group_ids = [ "sg-0e55969d4207c67b1", "sg-4c8c2c07" ]
+  }
+
   environment {
     variables = var.env_vars
   }
