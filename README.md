@@ -170,7 +170,7 @@ They will be viewable in the AWS Console.
 
 **Architecture Diagram**
 
-![Architecture Diagram](documentation/architecture/FO-architecture_diagram.pdf "Architecture Diagram")
+![Architecture Diagram](documentation/architecture/FO-architecture_diagram.pdf?raw=true "Architecture Diagram")
 
 
 # Project Practice & Learning
