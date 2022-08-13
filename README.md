@@ -170,7 +170,7 @@ They will be viewable in the AWS Console.
 
 **Architecture Diagram**
 
-![Architecture Diagram](https://raw.githubusercontent.com/Ishaaq-dev/Football-Organiser/40_Arch-Diagram/documentation/architecture/FO-architecture_diagram.pdf)
+![Architecture Diagram](documentation/architecture/FO-architecture_diagram.png)
 
 
 # Project Practice & Learning
