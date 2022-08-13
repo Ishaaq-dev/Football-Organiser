@@ -168,6 +168,11 @@ You will have created lambdas and a dynamoDB instance.
 
 They will be viewable in the AWS Console.
 
+**Architecture Diagram**
+
+![Architecture Diagram](documentation/architecture/FO-architecture_diagram.pdf "Architecture Diagram")
+
+
 # Project Practice & Learning
 
 Bilal: "Hey guys just doing a test"
