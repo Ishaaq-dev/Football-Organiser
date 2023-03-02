@@ -1,84 +1,88 @@
-locals {
-  players_dynamo_name = "${var.prefix}-${var.project}-players"
-}
+# locals {
+#   players_dynamo_name = "${var.prefix}-${var.project}-players"
+# }
 
-module "handle_incoming_responses_lambda_function" {
-  source = "./modules/lambda"
+# module "handle_incoming_responses_lambda_function" {
+#   source = "./modules/lambda"
 
-  prefix        = var.prefix
-  project       = var.project
-  function_name = "handle-incoming-responses"
-  layer_arns    = [aws_lambda_layer_version.util_layer.arn]
-  env_vars = {
-    players_db = aws_dynamodb_table.players_dynamodb.name
-  }
-}
+#   prefix        = var.prefix
+#   project       = var.project
+#   function_name = "handle-incoming-responses"
+#   layer_arns    = [aws_lambda_layer_version.util_layer.arn]
+#   env_vars = {
+#     players_db = aws_dynamodb_table.players_dynamodb.name
+#   }
+# }
 
-module "contact_players_lambda_function" {
-  source = "./modules/lambda"
+# module "contact_players_lambda_function" {
+#   source = "./modules/lambda"
 
-  prefix        = var.prefix
-  project       = var.project
-  function_name = "contact-players"
-  layer_arns    = [aws_lambda_layer_version.util_layer.arn]
-  env_vars = {
-    players_db = aws_dynamodb_table.players_dynamodb.name
-  }
-}
+#   prefix        = var.prefix
+#   project       = var.project
+#   function_name = "contact-players"
+#   layer_arns    = [aws_lambda_layer_version.util_layer.arn]
+#   env_vars = {
+#     players_db = aws_dynamodb_table.players_dynamodb.name
+#   }
+# }
 
-data "archive_file" "archive_util_layers" {
-  type        = "zip"
-  source_dir  = "${path.module}/../src/utils"
-  output_path = "${path.module}/src-zip/utils.zip"
-}
+# data "archive_file" "archive_util_layers" {
+#   type        = "zip"
+#   source_dir  = "${path.module}/../src/utils"
+#   output_path = "${path.module}/src-zip/utils.zip"
+# }
 
-resource "aws_lambda_layer_version" "util_layer" {
-  filename         = "src-zip/utils.zip"
-  layer_name       = "utils"
-  source_code_hash = filebase64sha256("src-zip/utils.zip")
+# resource "aws_lambda_layer_version" "util_layer" {
+#   filename         = "src-zip/utils.zip"
+#   layer_name       = "utils"
+#   source_code_hash = filebase64sha256("src-zip/utils.zip")
 
-  compatible_runtimes = ["python3.9"]
-}
+#   compatible_runtimes = ["python3.9"]
+# }
 
-module "incoming_sns_sqs" {
-  source = "./modules/sns-sqs"
+# module "incoming_sns_sqs" {
+#   source = "./modules/sns-sqs"
 
-  prefix       = var.prefix
-  project      = var.project
-  name         = "enquire-incoming-sms"
-  function_arn = module.handle_incoming_responses_lambda_function.function_arn
-}
+#   prefix       = var.prefix
+#   project      = var.project
+#   name         = "enquire-incoming-sms"
+#   function_arn = module.handle_incoming_responses_lambda_function.function_arn
+# }
 
-module "weekly_monday_cw_rule" {
-  source = "./modules/cw-events"
+# module "weekly_monday_cw_rule" {
+#   source = "./modules/cw-events"
 
-  cw_event_rule_name        = "weekly_monday"
-  cw_event_rule_description = "A rule to fire events weekly on Monday at 10:00"
-  cron                      = "cron(0 10 ? * MON *)"
+#   cw_event_rule_name        = "weekly_monday"
+#   cw_event_rule_description = "A rule to fire events weekly on Monday at 10:00"
+#   cron                      = "cron(0 10 ? * MON *)"
 
-  function_name = module.contact_players_lambda_function.function_name
-  function_arn  = module.contact_players_lambda_function.function_arn
-}
+#   function_name = module.contact_players_lambda_function.function_name
+#   function_arn  = module.contact_players_lambda_function.function_arn
+# }
 
-module "weekly_saturday_cw_rule" {
-  source = "./modules/cw-events"
+# module "weekly_saturday_cw_rule" {
+#   source = "./modules/cw-events"
 
-  cw_event_rule_name        = "weekly_saturday"
-  cw_event_rule_description = "A rule to fire events weekly on saturday at 18:00 to reset playing status"
-  cron                      = "cron(0 18:00 ? * SAT *)"
+#   cw_event_rule_name        = "weekly_saturday"
+#   cw_event_rule_description = "A rule to fire events weekly on saturday at 18:00 to reset playing status"
+#   cron                      = "cron(0 18:00 ? * SAT *)"
 
-  function_name = module.contact_players_lambda_function.function_name
-  function_arn  = module.contact_players_lambda_function.function_arn
-}
+#   function_name = module.contact_players_lambda_function.function_name
+#   function_arn  = module.contact_players_lambda_function.function_arn
+# }
 
-resource "aws_dynamodb_table" "players_dynamodb" {
-  name           = local.players_dynamo_name
-  read_capacity  = 1
-  write_capacity = 1
-  hash_key       = "phone_number"
+# resource "aws_dynamodb_table" "players_dynamodb" {
+#   name           = local.players_dynamo_name
+#   read_capacity  = 1
+#   write_capacity = 1
+#   hash_key       = "phone_number"
 
-  attribute {
-    name = "phone_number"
-    type = "S"
-  }
+#   attribute {
+#     name = "phone_number"
+#     type = "S"
+#   }
+# }
+
+resource "aws_api_gateway_rest_api" "football_organiser_api" {
+  name = "football-organiser-api"
 }
